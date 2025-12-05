@@ -194,7 +194,7 @@ window.addEventListener('load', () => {
         if (!buttonClicked) {
             console.log('⏳ 5 秒內未點擊，寫入 "no_click"');
 
-            const footprint = calculateCarbonFootprint('no_click');
+            const footprint = 5
             saveToLocalStorage('no_click');
             await saveCarbonData('no_click', footprint);
 
