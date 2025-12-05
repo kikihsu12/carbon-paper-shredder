@@ -21,28 +21,25 @@ const database = getDatabase(app);
 let buttonClicked = false;
 let pageOpenTime = Date.now();
 
-// 計算碳足跡
+
 function calculateCarbonFootprint(action, data = {}) {
-    let footprint = 0;
-
     switch (action) {
-        case 'no_click':
-            // 什麼都沒做自動關閉ㄔㄛ
-            footprint = 0.00007925;
-            break;
-        case 'button_2':
-            // 按了第二個按鈕
-            const seconds = data.seconds || 0;
-            footprint = seconds * 0.00001585;
-            break;
-        case 'submit':
-            // 輸入文字
-            const charCount = data.charCount || 0;
-            footprint = charCount * 0.000004;
-            break;
-    }
 
-    return footprint;
+        case 'no_click':
+            // 自動關閉 → 固定為 5
+            return 5;
+
+        case 'button_2':
+            // 停留秒數直接當碳足跡
+            return data.seconds || 0;
+
+        case 'submit':
+            // 使用者輸入字數直接當碳足跡
+            return data.charCount || 0;
+
+        default:
+            return 0;
+    }
 }
 
 // 儲存碳足跡資料到 Firebase
