@@ -153,9 +153,9 @@ document.getElementById('modalOkBtn').addEventListener('click', () => {
     closeAlert();
 });
 
-// **頁面載入後啟動 5 秒 no_click 機制**
+// **頁面載入後啟動 10 秒 no_click 機制**
 window.addEventListener('load', () => {
-    console.log('⏳ 開始 5 秒倒數');
+    console.log('⏳ 開始 10 秒倒數');
 
     const loadingScreen = document.getElementById('loadingScreen');
     const homePage = document.getElementById('homePage');
@@ -168,7 +168,7 @@ window.addEventListener('load', () => {
 
     setTimeout(async () => {
         if (!buttonClicked) {
-            console.log('⏳ 5 秒內未點擊 → no_click');
+            console.log('⏳ 10 秒內未點擊 → no_click');
 
             const footprint = 5;
 
@@ -177,5 +177,5 @@ window.addEventListener('load', () => {
 
             setTimeout(() => window.close(), 500);
         }
-    }, 5000);
+    }, 10000);
 });
